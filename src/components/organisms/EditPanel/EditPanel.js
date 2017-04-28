@@ -1,7 +1,7 @@
 // @flow
 import React, { Component, PropTypes } from "react"
 import { connect } from "react-redux"
-import { NavBar, DescBar } from "../../../components/molecules/"
+import { NavBar, DescBar, MetaBar } from "../../../components/molecules/"
 import * as NavActions from "../../../actions/editnav"
 import styles from "./styles.css"
 
@@ -32,6 +32,7 @@ export class EditPanel extends Component {
       <div>
         <NavBar type="edit"></NavBar>
         <DescBar type="edit"></DescBar>
+        <MetaBar type="edit"></MetaBar>
       </div>
     )
   }

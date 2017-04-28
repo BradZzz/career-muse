@@ -15,3 +15,4 @@ export { default as AuctionBid } from "./AuctionBid/AuctionBid";
 
 export { default as NavBar } from "./NavBar/NavBar";
 export { default as DescBar } from "./DescBar/DescBar";
+export { default as MetaBar } from "./MetaBar/MetaBar";

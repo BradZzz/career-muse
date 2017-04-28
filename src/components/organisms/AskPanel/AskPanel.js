@@ -2,7 +2,7 @@
 import React, { Component, PropTypes } from "react"
 import { connect } from "react-redux"
 import * as NavActions from "../../../actions/asknav"
-import { NavBar, DescBar } from "../../../components/molecules/"
+import { NavBar, DescBar, MetaBar } from "../../../components/molecules/"
 import styles from "./styles.css"
 
 export class AskPanel extends Component {
@@ -41,6 +41,7 @@ export class AskPanel extends Component {
       <div>
         <NavBar type="ask"></NavBar>
         <DescBar type="ask"></DescBar>
+        <MetaBar type="ask"></MetaBar>
       </div>
     )
   }
