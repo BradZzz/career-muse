@@ -12,3 +12,5 @@ export { default as DomainSpecific } from "./DomainSpecific/DomainSpecific";
 export { default as AuctionList } from "./AuctionList/AuctionList";
 export { default as AuctionSpecific } from "./AuctionSpecific/AuctionSpecific";
 export { default as AuctionBid } from "./AuctionBid/AuctionBid";
+
+export { default as NavBar } from "./NavBar/NavBar";

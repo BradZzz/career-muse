@@ -1,6 +1,7 @@
 // @flow
 import React, { Component, PropTypes } from "react"
 import { connect } from "react-redux"
+import { NavBar } from "../../../components/molecules/"
 import * as NavActions from "../../../actions/editnav"
 import styles from "./styles.css"
 
@@ -24,24 +25,12 @@ export class EditPanel extends Component {
     }
   }
 
-  renderTab = (tab, idx) => {
-    const { dispatch } = this.props
-    return (
-      <span className={styles.nav} onClick={ () => dispatch(NavActions.nav({ nav : idx })) } key={ idx }>
-        { tab }
-      </span>
-    )
-  }
-
   render() {
     const { names, current } = this.state.tabs
     console.log(this.state)
     return (
       <div>
-        <div style={{ zIndex: '1' }}>
-          { names.map(this.renderTab) }
-        </div>
-        { current }
+        <NavBar type="edit"></NavBar>
         EditPanel
       </div>
     )

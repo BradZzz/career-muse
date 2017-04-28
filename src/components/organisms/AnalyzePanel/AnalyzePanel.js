@@ -2,6 +2,7 @@
 import React, { Component, PropTypes } from "react"
 import { connect } from "react-redux"
 import * as NavActions from "../../../actions/analyzenav"
+import { NavBar } from "../../../components/molecules/"
 import styles from "./styles.css"
 
 export class AnalyzePanel extends Component {
@@ -38,10 +39,7 @@ export class AnalyzePanel extends Component {
     console.log(this.state)
     return (
       <div>
-        <div style={{ zIndex: '1' }}>
-          { names.map(this.renderTab) }
-        </div>
-        { current }
+        <NavBar type="analyze"></NavBar>
         AnalyzePanel
       </div>
     )
