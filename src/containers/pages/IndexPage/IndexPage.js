@@ -16,7 +16,7 @@ export class IndexPage extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.signedIn) {
-      this.props.router.push('/domains')
+      this.props.router.push('/meta')
     }
   }
 

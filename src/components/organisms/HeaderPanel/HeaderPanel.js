@@ -4,6 +4,7 @@ import { Name, Button } from "../../../components/atoms/"
 import { CenterBox, LogoutButton, UsrImgBox } from "../../../components/molecules/"
 import { connect } from "react-redux"
 import { browserHistory } from 'react-router'
+import * as NavActions from "../../../actions/mainnav"
 import styles from "./styles.css"
 
 const imgStyle = {
@@ -33,7 +34,11 @@ export class HeaderPanel extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      signedin: props.signedIn
+      signedin: props.signedIn,
+      tabs: {
+        names : props.navTab,
+        mcurrent : props.mcurrent,
+      }
     }
   }
 
@@ -44,17 +49,22 @@ export class HeaderPanel extends Component {
     }
   }
 
+  renderTab = (tab, idx) => {
+    const { dispatch } = this.props
+    return (
+      <span className={styles.nav} onClick={ () => dispatch(NavActions.nav({ nav : idx })) } key={ idx }>
+        { tab }
+      </span>
+    )
+  }
+
   render() {
-    const { meta } = this.props
+    const { names } = this.state.tabs
+    console.log(names)
     return (
       <div className={styles.root} style={{ display: this.state.signedIn ? 'block' : 'none' }}>
         <div className={styles.navWrap} style={{ zIndex: '1' }}>
-          <span className={styles.nav} onClick={ () => browserHistory.push('/domains') }>
-            Domains
-          </span>
-          <span className={styles.nav} onClick={ () => browserHistory.push('/auctions') }>
-            Auctions
-          </span>
+          { names.map(this.renderTab) }
         </div>
         <CenterBox align="right" height="50px">
           <div className="flex layout-row layout-align-end-center" style={{ height: "100%"}}>
@@ -72,15 +82,20 @@ HeaderPanel.propTypes = {
   signedIn: PropTypes.bool.isRequired,
   isFetching: PropTypes.bool.isRequired,
   meta: PropTypes.object.isRequired,
+  navTab: PropTypes.array.isRequired,
+  mcurrent: PropTypes.number.isRequired,
   dispatch: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
   const { signedIn, isFetching, meta } = state.user
+  const { navTab, mcurrent } = state.mainnav
   return {
     signedIn,
     isFetching,
     meta,
+    navTab,
+    mcurrent,
   }
 }
 

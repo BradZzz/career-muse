@@ -26,7 +26,7 @@ export class TitlePanel extends Component {
         height: this.state.signedIn ? '100px' : '200px',
       }}>
         <header>
-          <h1 className={styles.title}>occas.io</h1>
+          <h1 className={styles.title}>careermuse</h1>
         </header>
       </div>
     )

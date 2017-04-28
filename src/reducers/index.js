@@ -5,7 +5,11 @@ import counter from "./counter";
 import user from "./user";
 import domain from "./domain";
 import auction from "./auction";
-import whois from "./whois";
+import smeta from "./smeta";
+import mainnav from "./mainnav";
+import asknav from "./asknav";
+import analyzenav from "./analyzenav";
+import editnav from "./editnav";
 
 const rootReducer = combineReducers({
   routing: routerReducer,
@@ -13,7 +17,11 @@ const rootReducer = combineReducers({
   user,
   domain,
   auction,
-  whois
+  smeta,
+  mainnav,
+  asknav,
+  analyzenav,
+  editnav
 });
 
 export default rootReducer;

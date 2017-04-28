@@ -6,6 +6,7 @@ import {
   IndexPage,
   DomainPage,
   AuctionPage,
+  MetaPage,
 } from "./containers/pages/";
 
 import type { Store } from "redux";
@@ -18,6 +19,7 @@ const getRoutes = (store: Store<*, *>) => {
       <IndexRoute component={IndexPage} />
       <Route path="/domains" component={DomainPage} />
       <Route path="/auctions" component={AuctionPage} />
+      <Route path="/meta" component={MetaPage} />
     </Route>
   );
 };

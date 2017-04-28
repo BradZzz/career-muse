@@ -34,6 +34,18 @@ app.get('/', function(request, response) {
 })
 
 //This gets the list of domains
+app.get('/smeta', function(req, res) {
+  request('https://s3.amazonaws.com/cmresumeviewer/text_to_use.json', function (error, response, body) {
+    if (error) {
+      res.send(error)
+    } else {
+      //console.log(body)
+      res.send(body)
+    }
+  })
+})
+
+//This gets the list of domains
 app.get('/data/io', function(req, res) {
   request('https://wwws.io/api/full/962/' + process.env.DOM_USR + '/' + process.env.DOM_PASS + '/', function (error, response, body) {
     if (error) {
