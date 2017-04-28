@@ -4,6 +4,7 @@ import * as N from "../actions/mainnav"
 
 const initialState = {
   navTab : ['Ask','Analyze','Edit'],
+  navDesc : ['Ask About Your Resume','Analyze Your Background', 'Edit Your Results'],
   mcurrent : 0,
 }
 

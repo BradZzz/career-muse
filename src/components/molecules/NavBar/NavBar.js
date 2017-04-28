@@ -32,12 +32,12 @@ export class NavBar extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { type } = this.state
+    const { type, tabs } = this.state
+
     switch(type){
       case "ask":
         if(JSON.stringify(this.state.tabs.current) !== JSON.stringify(nextProps.askCurrent))
         {
-          const tabs = this.state.tabs
           tabs.current = nextProps.askCurrent
           this.setState({ tabs })
         }
@@ -45,7 +45,6 @@ export class NavBar extends Component {
       case "analyze":
         if(JSON.stringify(this.state.tabs.current) !== JSON.stringify(nextProps.analyzeCurrent))
         {
-          const tabs = this.state.tabs
           tabs.current = nextProps.analyzeCurrent
           this.setState({ tabs })
         }
@@ -53,7 +52,6 @@ export class NavBar extends Component {
       case "edit":
         if(JSON.stringify(this.state.tabs.current) !== JSON.stringify(nextProps.editCurrent))
         {
-          const tabs = this.state.tabs
           tabs.current = nextProps.editCurrent
           this.setState({ tabs })
         }
@@ -64,30 +62,24 @@ export class NavBar extends Component {
   renderTab = (tab, idx) => {
     const { dispatch } = this.props
     const { type } = this.state
+    const { current } = this.state.tabs
+    let clicky = () => dispatch(AskNavActions.nav({ nav : idx }))
     switch(type){
-      case "ask":
-        return <span className={styles.nav} onClick={ () => dispatch(AskNavActions.nav({ nav : idx })) } key={ idx }>
-                 { tab }
-               </span>
-      case "analyze":
-        return <span className={styles.nav} onClick={ () => dispatch(AnalyzeNavActions.nav({ nav : idx })) } key={ idx }>
-                 { tab }
-               </span>
-      case "edit":
-        return <span className={styles.nav} onClick={ () => dispatch(EditNavActions.nav({ nav : idx })) } key={ idx }>
-                 { tab }
-               </span>
+      case "analyze": clicky = () => dispatch(AnalyzeNavActions.nav({ nav : idx })); break;
+      case "edit": clicky = () => dispatch(EditNavActions.nav({ nav : idx })); break;
     }
+    return <span className={ current === idx ? styles.tab + " " + styles.selected : styles.tab } onClick={ clicky } key={ idx }>
+             { tab }
+           </span>
   }
 
   render() {
     const { names, current } = this.state.tabs
     return (
-      <div className={ "center" }>
+      <div className={styles.root}>
         <div style={{ zIndex: '1' }}>
           { names.map(this.renderTab) }
         </div>
-        { current }
       </div>
     );
   }

@@ -4,6 +4,7 @@ import * as A from "../actions/asknav"
 
 const initialState = {
   navTab : ['Tell','Share','Select'],
+  navDesc : ['Tell Your Story','Share Your Sentiments','Select Your Jobs'],
   acurrent : 0,
 }
 

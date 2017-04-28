@@ -1,0 +1,12 @@
+.root {
+  height: 50px;
+}
+
+.main {
+  font-size: 3em;
+  font-weight: bold;
+}
+
+.main, .desc {
+  text-align: center;
+}

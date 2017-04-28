@@ -2,7 +2,7 @@
 import React, { Component, PropTypes } from "react"
 import { connect } from "react-redux"
 import * as SMetaActions from "../../../actions/smeta"
-import { AskPanel, AnalyzePanel, EditPanel } from "../../../components/organisms/"
+import { AskPanel, AnalyzePanel, EditPanel, FooterPanel } from "../../../components/organisms/"
 import styles from "./styles.css"
 import type { Dispatch } from "redux"
 
@@ -41,6 +41,7 @@ export class MetaPage extends Component {
     return (
       <div className={styles.root}>
         { panels.map(this.renderPanel) }
+        <FooterPanel></FooterPanel>
       </div>
     )
   }

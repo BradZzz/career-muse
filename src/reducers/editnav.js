@@ -4,6 +4,7 @@ import * as N from "../actions/editnav"
 
 const initialState = {
   navTab : ['Tailor','View'],
+  navDesc : ['Tailor Information','View Resume'],
   ecurrent : 0,
 }
 

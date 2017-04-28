@@ -2,7 +2,7 @@
 import React, { Component, PropTypes } from "react"
 import { connect } from "react-redux"
 import * as NavActions from "../../../actions/analyzenav"
-import { NavBar } from "../../../components/molecules/"
+import { NavBar, DescBar } from "../../../components/molecules/"
 import styles from "./styles.css"
 
 export class AnalyzePanel extends Component {
@@ -40,7 +40,7 @@ export class AnalyzePanel extends Component {
     return (
       <div>
         <NavBar type="analyze"></NavBar>
-        AnalyzePanel
+        <DescBar type="analyze"></DescBar>
       </div>
     )
   }
