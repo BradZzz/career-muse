@@ -67,7 +67,7 @@ export class MetaBar extends Component {
     console.log(sub.meta[sub.current])
     return (
       <div className={styles.root}>
-        <div className={styles.desc}>{ sub.meta[sub.current].elems[0] }</div>
+        { sub.meta[sub.current].elems.map((el, idx) => <div key={ idx } className={styles.desc}>{ el }</div>) }
       </div>
     );
   }

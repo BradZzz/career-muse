@@ -1,8 +1,8 @@
 // @flow
 import React from "react"
-import { handleActions } from "redux-actions";
+import { handleActions } from "redux-actions"
 import * as A from "../actions/asknav"
-import TextField from 'material-ui/TextField';
+import TextField from 'material-ui/TextField'
 import { Button } from "../components/atoms/"
 
 const renderButton = (text, idx) => {
@@ -27,6 +27,13 @@ const genForm = (info) => {
   return <div>
       { header }
       { sub }
+      { text.map((txt) => genQuestions(txt.text,txt.hint)) }
+      <TextField
+        errorText={ form }
+        multiLine={true}
+        rows={5}
+      />
+      { buttons.map(renderButton) }
   </div>
 }
 
