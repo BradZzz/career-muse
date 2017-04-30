@@ -30,8 +30,6 @@ export class EditPanel extends Component {
     console.log(this.state)
     return (
       <div>
-        <NavBar type="edit"></NavBar>
-        <DescBar type="edit"></DescBar>
         <MetaBar type="edit"></MetaBar>
       </div>
     )

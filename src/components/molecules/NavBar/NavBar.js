@@ -11,63 +11,80 @@ export class NavBar extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      type: props.type,
+      main: {
+        current : props.mainCurrent,
+        tabs : props.tabs,
+      },
       tabs: this.tabState(),
     }
   }
 
   tabState = () => {
-    const { type } = this.props
-    switch(type){
-      case "ask":
+    const { mainCurrent, tabs } = this.props
+    switch(tabs[mainCurrent]){
+      case "Ask":
         const { askTab, askCurrent } = this.props
         return { names : askTab, current : askCurrent }
-      case "analyze":
+      case "Analyze":
         const { analyzeTab, analyzeCurrent } = this.props
         return { names : analyzeTab, current : analyzeCurrent }
-      case "edit":
+      case "Edit":
         const { editTab, editCurrent } = this.props
         return { names : editTab, current : editCurrent }
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    const { type, tabs } = this.state
+    const { main, tabs } = this.state
 
-    switch(type){
-      case "ask":
-        if(JSON.stringify(this.state.tabs.current) !== JSON.stringify(nextProps.askCurrent))
+    if(JSON.stringify(main.current) !== JSON.stringify(nextProps.mainCurrent))
+    {
+      main.current = nextProps.mainCurrent
+    }
+    this.setState({ main })
+
+    switch(this.state.main.tabs[this.state.main.current]){
+      case "Ask":
+        if(JSON.stringify(tabs.current) !== JSON.stringify(nextProps.askCurrent))
         {
           tabs.current = nextProps.askCurrent
-          this.setState({ tabs })
+          tabs.names = nextProps.askTab
         }
       break;
-      case "analyze":
-        if(JSON.stringify(this.state.tabs.current) !== JSON.stringify(nextProps.analyzeCurrent))
+      case "Analyze":
+        if(JSON.stringify(tabs.current) !== JSON.stringify(nextProps.analyzeCurrent))
         {
           tabs.current = nextProps.analyzeCurrent
-          this.setState({ tabs })
+          tabs.names = nextProps.analyzeTab
         }
       break;
-      case "edit":
-        if(JSON.stringify(this.state.tabs.current) !== JSON.stringify(nextProps.editCurrent))
+      case "Edit":
+        if(JSON.stringify(tabs.current) !== JSON.stringify(nextProps.editCurrent))
         {
           tabs.current = nextProps.editCurrent
-          this.setState({ tabs })
+          tabs.names = nextProps.editTab
         }
       break;
     }
+    this.setState({ tabs })
+
+    console.log("Done Navbar: ")
+    console.log(this.state)
   }
 
   renderTab = (tab, idx) => {
     const { dispatch } = this.props
-    const { type } = this.state
-    const { current } = this.state.tabs
+    const { main, tabs } = this.state
+    const { current } = tabs
     let clicky = () => dispatch(AskNavActions.nav({ nav : idx }))
-    switch(type){
-      case "analyze": clicky = () => dispatch(AnalyzeNavActions.nav({ nav : idx })); break;
-      case "edit": clicky = () => dispatch(EditNavActions.nav({ nav : idx })); break;
+    switch(main.tabs[main.current]){
+      case "Analyze": clicky = () => dispatch(AnalyzeNavActions.nav({ nav : idx })); break;
+      case "Edit": clicky = () => dispatch(EditNavActions.nav({ nav : idx })); break;
     }
+
+    console.log("renderTab")
+    console.log(idx + ":" + current)
+
     return <span className={ current === idx ? styles.tab + " " + styles.selected : styles.tab } onClick={ clicky } key={ idx }>
              { tab }
            </span>
@@ -86,6 +103,9 @@ export class NavBar extends Component {
 }
 
 NavBar.propTypes = {
+  tabs: PropTypes.array.isRequired,
+  mainCurrent: PropTypes.number.isRequired,
+
   askTab: PropTypes.array.isRequired,
   askCurrent: PropTypes.number.isRequired,
 
@@ -100,11 +120,13 @@ NavBar.propTypes = {
 }
 
 function mapStateToProps(state) {
-
+  const { mcurrent: mainCurrent, navTab : tabs } = state.mainnav
   const { navTab: askTab, acurrent: askCurrent } = state.asknav
   const { navTab: analyzeTab, ancurrent: analyzeCurrent } = state.analyzenav
   const { navTab: editTab, ecurrent: editCurrent } = state.editnav
   return {
+    tabs,
+    mainCurrent,
     askTab,
     askCurrent,
     analyzeTab,

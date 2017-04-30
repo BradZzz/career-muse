@@ -39,8 +39,6 @@ export class AnalyzePanel extends Component {
     console.log(this.state)
     return (
       <div>
-        <NavBar type="analyze"></NavBar>
-        <DescBar type="analyze"></DescBar>
         <MetaBar type="analyze"></MetaBar>
       </div>
     )

@@ -39,8 +39,6 @@ export class AskPanel extends Component {
     console.log(this.state)
     return (
       <div>
-        <NavBar type="ask"></NavBar>
-        <DescBar type="ask"></DescBar>
         <MetaBar type="ask"></MetaBar>
       </div>
     )

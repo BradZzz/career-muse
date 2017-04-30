@@ -7,25 +7,25 @@ export class DescBar extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      type: props.type,
       main: {
         desc : props.mainDesc,
         current : props.mainCurrent,
+        tabs : props.tabs,
       },
       sub: this.update(),
     }
   }
 
   update = () => {
-    const { type } = this.props
-    switch(type){
-      case "ask":
+    const { mainCurrent, tabs } = this.props
+    switch(tabs[mainCurrent]){
+      case "Ask":
         const { askDesc, askCurrent } = this.props
         return { current : askCurrent, desc: askDesc }
-      case "analyze":
+      case "Analyze":
         const { analyzeDesc, analyzeCurrent } = this.props
         return { current: analyzeCurrent, desc: analyzeDesc }
-      case "edit":
+      case "Edit":
         const { editDesc, editCurrent } = this.props
         return { current : editCurrent, desc: editDesc }
       default : return { current : 0, desc: [""] }
@@ -33,32 +33,41 @@ export class DescBar extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { type, main, sub } = this.state
-    switch(type){
-      case "ask":
-        if(JSON.stringify(this.state.sub.current) !== JSON.stringify(nextProps.askCurrent))
-        {
-          sub.current = nextProps.askCurrent
-        }
-      break;
-      case "analyze":
-        if(JSON.stringify(this.state.sub.current) !== JSON.stringify(nextProps.analyzeCurrent))
-        {
-          sub.current = nextProps.analyzeCurrent
-        }
-      break;
-      case "edit":
-        if(JSON.stringify(this.state.sub.current) !== JSON.stringify(nextProps.editCurrent))
-        {
-          sub.current = nextProps.editCurrent
-        }
-      break;
-    }
-    if(JSON.stringify(this.state.main.current) !== JSON.stringify(nextProps.mainCurrent))
+    const { sub, main } = this.state
+
+    if(JSON.stringify(main.current) !== JSON.stringify(nextProps.mainCurrent))
     {
       main.current = nextProps.mainCurrent
     }
-    this.setState({ sub, main })
+    this.setState({ main })
+
+    switch(this.state.main.tabs[this.state.main.current]){
+      case "Ask":
+        if(JSON.stringify(sub.current) !== JSON.stringify(nextProps.askCurrent))
+        {
+          sub.current = nextProps.askCurrent
+          sub.desc = nextProps.askDesc
+        }
+      break;
+      case "Analyze":
+        if(JSON.stringify(sub.current) !== JSON.stringify(nextProps.analyzeCurrent))
+        {
+          sub.current = nextProps.analyzeCurrent
+          sub.desc = nextProps.analyzeDesc
+        }
+      break;
+      case "Edit":
+        if(JSON.stringify(sub.current) !== JSON.stringify(nextProps.editCurrent))
+        {
+          sub.current = nextProps.editCurrent
+          sub.desc = nextProps.editDesc
+        }
+      break;
+    }
+    this.setState({ sub })
+
+    console.log("Done DescBar: ")
+    console.log(this.state)
   }
 
   render() {
@@ -67,12 +76,14 @@ export class DescBar extends Component {
       <div className={styles.root}>
         <div className={styles.main}>{ main.desc[main.current] }</div>
         <div className={styles.desc}>{ sub.desc[sub.current] }</div>
+        {this.props.children}
       </div>
     );
   }
 }
 
 DescBar.propTypes = {
+  tabs: PropTypes.array.isRequired,
   mainDesc: PropTypes.array.isRequired,
   mainCurrent: PropTypes.number.isRequired,
   askDesc: PropTypes.array.isRequired,
@@ -81,15 +92,15 @@ DescBar.propTypes = {
   analyzeCurrent: PropTypes.number.isRequired,
   editDesc: PropTypes.array.isRequired,
   editCurrent: PropTypes.number.isRequired,
-  type: PropTypes.string.isRequired
 }
 
 function mapStateToProps(state) {
-  const { navDesc: mainDesc, mcurrent: mainCurrent } = state.mainnav
+  const { navDesc: mainDesc, mcurrent: mainCurrent, navTab : tabs } = state.mainnav
   const { navDesc: askDesc, acurrent: askCurrent } = state.asknav
   const { navDesc: analyzeDesc, ancurrent: analyzeCurrent } = state.analyzenav
   const { navDesc: editDesc, ecurrent: editCurrent } = state.editnav
   return {
+    tabs,
     mainDesc,
     mainCurrent,
     askDesc,
