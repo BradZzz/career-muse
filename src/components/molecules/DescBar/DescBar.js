@@ -43,30 +43,22 @@ export class DescBar extends Component {
 
     switch(this.state.main.tabs[this.state.main.current]){
       case "Ask":
-        if(JSON.stringify(sub.current) !== JSON.stringify(nextProps.askCurrent))
-        {
-          sub.current = nextProps.askCurrent
-          sub.desc = nextProps.askDesc
-        }
+        sub.current = nextProps.askCurrent
+        sub.desc = nextProps.askDesc
       break;
       case "Analyze":
-        if(JSON.stringify(sub.current) !== JSON.stringify(nextProps.analyzeCurrent))
-        {
-          sub.current = nextProps.analyzeCurrent
-          sub.desc = nextProps.analyzeDesc
-        }
+        sub.current = nextProps.analyzeCurrent
+        sub.desc = nextProps.analyzeDesc
       break;
       case "Edit":
-        if(JSON.stringify(sub.current) !== JSON.stringify(nextProps.editCurrent))
-        {
-          sub.current = nextProps.editCurrent
-          sub.desc = nextProps.editDesc
-        }
+        sub.current = nextProps.editCurrent
+        sub.desc = nextProps.editDesc
       break;
     }
     this.setState({ sub })
 
     console.log("Done DescBar: ")
+    console.log(this.state.main.tabs[this.state.main.current])
     console.log(this.state)
   }
 

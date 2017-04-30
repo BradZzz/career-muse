@@ -45,30 +45,22 @@ export class NavBar extends Component {
 
     switch(this.state.main.tabs[this.state.main.current]){
       case "Ask":
-        if(JSON.stringify(tabs.current) !== JSON.stringify(nextProps.askCurrent))
-        {
-          tabs.current = nextProps.askCurrent
-          tabs.names = nextProps.askTab
-        }
+        tabs.current = nextProps.askCurrent
+        tabs.names = nextProps.askTab
       break;
       case "Analyze":
-        if(JSON.stringify(tabs.current) !== JSON.stringify(nextProps.analyzeCurrent))
-        {
-          tabs.current = nextProps.analyzeCurrent
-          tabs.names = nextProps.analyzeTab
-        }
+        tabs.current = nextProps.analyzeCurrent
+        tabs.names = nextProps.analyzeTab
       break;
       case "Edit":
-        if(JSON.stringify(tabs.current) !== JSON.stringify(nextProps.editCurrent))
-        {
-          tabs.current = nextProps.editCurrent
-          tabs.names = nextProps.editTab
-        }
+        tabs.current = nextProps.editCurrent
+        tabs.names = nextProps.editTab
       break;
     }
     this.setState({ tabs })
 
     console.log("Done Navbar: ")
+    console.log(this.state.main.tabs[this.state.main.current])
     console.log(this.state)
   }
 
