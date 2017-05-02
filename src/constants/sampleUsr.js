@@ -428,5 +428,5 @@ export const TEST_USRS = [ user1, user2 ]
 export const TEST_USR_SKILLS = ["Technical", "Escalation Management", "Mentorship", "Agile Methodologies", "Process Improvement",
  "Project Delivery", "Software Development", "Complex Projects", "Technical Problems", "Technical Skills", "Performance Metrics",
  "Open Source", "TPM", "JIRA"]
-export const TEST_USR_SKILLS_SOFT = ["Strong Organizational Skills", "Problem Solving", "Analytical", "Collaborate", "Collaboration",
+export const TEST_USR_SKILLS_SOFT = ["Strong Org. Skills", "Problem Solving", "Analytical", "Collaborate", "Collaboration",
   "Disciplined", "Driven", "Entrepreneurial", "Innovative", "Passionate", "Problem Solving Skills", "Risk Taking", "Communication Skills"]

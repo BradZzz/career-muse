@@ -1,0 +1,53 @@
+@import "variables.css";
+
+.root {
+  background: #eee;
+  border-radius: 0;
+  border: 1px solid #000;
+  color: #111;
+  padding: 10px 20px;
+  font-weight: bold;
+  font-size: 16px;
+  user-select: none;
+  cursor: pointer;
+  margin: 1em;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background-color: color(#eee blackness(8%));
+  }
+
+  &:active {
+    background-color: color(#eee blackness(20%));
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .2) inset;
+  }
+}
+
+.active {
+  background: var(--accent-color);
+  border-radius: 0;
+  border: 1px solid #000;
+  color: #eee;
+  padding: 10px 20px;
+  font-weight: bold;
+  font-size: 16px;
+  user-select: none;
+  cursor: pointer;
+  margin: 1em;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background-color: color(var(--accent-color) blackness(60%));
+  }
+
+  &:active {
+    background-color: color(var(--accent-color) blackness(75%));
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .2) inset;
+  }
+}

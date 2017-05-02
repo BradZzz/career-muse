@@ -107,7 +107,6 @@ NavBar.propTypes = {
   editTab: PropTypes.array.isRequired,
   editCurrent: PropTypes.number.isRequired,
 
-  type: PropTypes.string.isRequired,
   dispatch: PropTypes.func.isRequired
 }
 

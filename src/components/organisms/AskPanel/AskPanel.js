@@ -25,18 +25,8 @@ export class AskPanel extends Component {
     }
   }
 
-  renderTab = (tab, idx) => {
-    const { dispatch } = this.props
-    return (
-      <span className={styles.nav} onClick={ () => dispatch(NavActions.nav({ nav : idx })) } key={ idx }>
-        { tab }
-      </span>
-    )
-  }
-
   render() {
     const { names, current } = this.state.tabs
-    console.log(this.state)
     return (
       <div>
         <MetaBar type="ask"></MetaBar>

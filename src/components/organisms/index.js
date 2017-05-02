@@ -9,4 +9,5 @@ export { default as AuctionPanel } from "./AuctionPanel/AuctionPanel";
 export { default as AskPanel } from "./AskPanel/AskPanel";
 export { default as AnalyzePanel } from "./AnalyzePanel/AnalyzePanel";
 export { default as EditPanel } from "./EditPanel/EditPanel";
+export { default as IteratorPanel } from "./IteratorPanel/IteratorPanel";
 

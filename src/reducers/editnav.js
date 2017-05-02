@@ -5,7 +5,8 @@ import TextField from 'material-ui/TextField'
 import { handleActions } from "redux-actions"
 import * as N from "../actions/editnav"
 import * as su from "../constants/sampleUsr"
-import { Button, TxtEditor } from "../components/atoms/"
+import { IteratorPanel } from "../components/organisms/"
+import { ButtonAlt, TxtEditor } from "../components/atoms/"
 
 const genHeader = (text) => {
   return <h1>{ text }</h1>
@@ -20,13 +21,14 @@ const genPar = (text) => {
 }
 
 const genMultiForm = (resumeString) => {
-  return <div style={{ width: '96%', margin: '1em', height: '250px', 'overflowY': 'auto' }}>
+  return <div style={{ width: '96%', margin: '1em', height: '45vh', 'overflowY': 'auto', 'background': 'white',
+    'borderRadius' : '5px', 'textAlign' : 'left' }}>
       <TxtEditor content={ resumeString }></TxtEditor>
   </div>
 }
 
 const renderButton = (text, idx) => {
-  return <Button key={ idx }>{ text }</Button>
+  return <ButtonAlt key={ idx }>{ text }</ButtonAlt>
 }
 
 const genDownloadForm = (buttons) => {
@@ -39,13 +41,17 @@ const initialState = {
   navTab : ['Tailor','Download'],
   navDesc : ['Tailor Information','Download Resume'],
   navMeta : [ { elems : [
+
     genHeader("Let's take one last look at your resume. Feel free to change anything you like!"),
     genMultiForm(JSON.stringify(su.TEST_USRS[0]))
+
    ] }, { elems : [
+
     genHeader("Nice! Your resume has been optimized!"),
     genNews("Time to start pushing it out to the world! Here are your options:"),
     genDownloadForm(["Dropbox","Download","Email"]),
     genPar("All of your resume versions are safe, sound, and secure with us."),
+
    ] } ],
   usrMeta : su.TEST_USRS[0],
   ecurrent : 0,

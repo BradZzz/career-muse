@@ -3,10 +3,11 @@ import React from "react"
 import { handleActions } from "redux-actions"
 import * as A from "../actions/asknav"
 import TextField from 'material-ui/TextField'
-import { Button } from "../components/atoms/"
+import { IteratorPanel } from "../components/organisms/"
+import { ButtonAlt } from "../components/atoms/"
 
 const renderButton = (text, idx) => {
-  return <Button key={ idx }>{ text }</Button>
+  return <ButtonAlt key={ idx }>{ text }</ButtonAlt>
 }
 
 const genQuestions = (text, hint) => {
@@ -17,53 +18,63 @@ const genQuestions = (text, hint) => {
 
 const genButtons = (question, buttons) => {
   return <div>
-      { question }
-      { buttons.map(renderButton) }
+      <div style={{ "margin" : "1em" }}>{ question }</div>
+      <div>{ buttons.map(renderButton) }</div>
   </div>
 }
 
 const genForm = (info) => {
   const { header, sub, text, form, buttons } = info
   return <div>
-      { header }
-      { sub }
+      <div>{ header }</div>
+      <div>{ sub }</div>
       { text.map((txt) => genQuestions(txt.text,txt.hint)) }
-      <TextField
-        errorText={ form }
-        multiLine={true}
-        rows={5}
-      />
-      { buttons.map(renderButton) }
+      <div style={{ "margin":"1em" }}>{ form }</div>
+      <div style={{ "width":"540px", "border-radius":"5px", "background":"#eeeeee", "margin":"0 auto" }}>
+        <TextField
+          style={{ "width":"500px", "margin":"0 auto" }}
+          multiLine={true}
+          rows={5}/>
+      </div>
+      <div style={{ 'margin' : '1em' }}>{ buttons.map(renderButton) }</div>
   </div>
 }
 
+const form = {
+  header : "Nice! Tell us about the job(s) you want!",
+  sub : "We'll tailor and optimize your resume for each job you add!",
+  text: [
+    { text: "I want to apply to be a ", hint: "job title" },
+    { text: "I want to work at ", hint: "company" }
+  ],
+  form : "Paste a job description. A link may disappear!",
+  buttons : [ "Yes, let's add another job", "No, let's kick off the process" ]
+}
+
 const initialState = {
-  navTab : ['Tell','Share','Select'],
-  navDesc : ['Tell Your Story','Share Your Sentiments','Select Your Jobs'],
+  navTab : ['Upload','Tell','Share','Select'],
+  navDesc : ['Upload Your Resume','Tell Your Story','Share Your Sentiments','Select Your Jobs'],
   navMeta : [{ elems : [
-    genQuestions("I'm passionate about ","Go after it!"),
-    genQuestions("I'm most recognized by my peers / managers for ","Way to go rock star!"),
-    genQuestions("My top skills are ","Look at those mad skills!"),
+     genButtons("Click on the button below to select you resume and upload it!",["Upload Resume"])
+   ]},{ elems : [
+    <IteratorPanel>
+      { genQuestions("I'm passionate about ","Go after it!") }
+      { genQuestions("I'm most recognized by my peers / managers for ","Way to go rock star!") }
+      { genQuestions("My top skills are ","Look at those mad skills!") }
+    </IteratorPanel>
   ]},{
     elems : [
-      genButtons("How is your job search going?",["Making Progress","Slowly Moving","Hearing Crickets"]),
-      genButtons("How are you feeling about your resume right now?",["Good","Not Sure","Bad"]),
-      genButtons("Are any of these things impacting you?",
-        ["Graduated recently", "Have work gaps in resume", "Got laid off", "Left military", "No work experience"]
-      ),
+      <IteratorPanel>
+        { genButtons("How is your job search going?",["Making Progress","Slowly Moving","Hearing Crickets"]) }
+        { genButtons("How are you feeling about your resume right now?",["Good","Not Sure","Bad"]) }
+        { genButtons("Are any of these things impacting you?",
+          ["Graduated recently", "Have work gaps in resume", "Got laid off", "Left military", "No work experience"]
+        ) }
+      </IteratorPanel>
     ]
   },{
     elems : [
-      genForm({
-        header : "Nice! Tell us about the job(s) you want!",
-        sub : "We'll tailor and optimize your resume for each job you add!",
-        text: [
-          { text: "I want to apply to be a ", hint: "job title" },
-          { text: "I want to work at ", hint: "company" }
-        ],
-        form : "Paste a job description. Why not a link? It could disappear at any time!",
-        buttons : [ "Yes, let's add another job", "No, let's kick off the process" ]
-      })
+      genForm( form )
     ]
   }],
   acurrent : 0,
