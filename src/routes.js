@@ -4,8 +4,6 @@ import { Route, IndexRoute } from "react-router";
 import CoreLayout from "./layouts/CoreLayout";
 import {
   IndexPage,
-  DomainPage,
-  AuctionPage,
   MetaPage,
 } from "./containers/pages/";
 
@@ -17,8 +15,6 @@ const getRoutes = (store: Store<*, *>) => {
   return (
     <Route path="/" component={CoreLayout}>
       <IndexRoute component={IndexPage} />
-      <Route path="/domains" component={DomainPage} />
-      <Route path="/auctions" component={AuctionPage} />
       <Route path="/meta" component={MetaPage} />
     </Route>
   );
