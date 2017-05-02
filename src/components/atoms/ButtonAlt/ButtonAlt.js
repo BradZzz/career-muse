@@ -15,11 +15,12 @@ export class ButtonAlt extends Component {
   action = () => this.setState({ active: this.state.clickable ? !this.state.active : false })
 
   render() {
+    const { style } = this.props
     const { active } = this.state
     return (
       <button
-         {...this.props}
          onClick={ this.action }
+         style = { style }
          className={ active ? styles.active : styles.root}>
          {this.props.children}
        </button>

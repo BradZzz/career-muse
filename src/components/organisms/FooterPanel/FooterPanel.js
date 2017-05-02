@@ -7,7 +7,7 @@ export class FooterPanel extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      info : ["Made with <3 in Seattle","Copyright " + new Date().getFullYear() + " Career Muse"]
+      info : ["Made with ☕ in Seattle","Copyright " + new Date().getFullYear() + " Career Muse"]
     }
   }
 

@@ -69,6 +69,7 @@ export class HeaderPanel extends Component {
     console.log(names)
     return (
       <div className={styles.root} style={{ display: this.state.signedIn ? 'block' : 'none' }}>
+        <img src="../images/cm-logo-sm-alt.png" style={{ 'width' : '50px', 'margin-left': '1em', 'position' : 'absolute' }}/>
         <div className={styles.navWrap} style={{ zIndex: '1' }}>
           { names.map(this.renderTab) }
         </div>

@@ -14,6 +14,10 @@ const renderButtonUnClk = (text, idx) => {
   return <ButtonAlt clickable={ false } key={ idx }>{ text }</ButtonAlt>
 }
 
+const renderButtonUnClkFull = (text, idx) => {
+  return <ButtonAlt style={{ 'width':'100%' }} clickable={ false } key={ idx }>{ text }</ButtonAlt>
+}
+
 const genQuestions = (text, hint) => {
   return <div>
       { text }<TextField style={{ "margin-left" : ".6em" }} hintText={ hint }/><br />
@@ -50,6 +54,11 @@ const genForm = (info) => {
 //      <div style={{ 'margin' : '1em' }}>{ buttons.map(renderButton) }</div>
 //  </div>
   return <div>
+    <div style={{ width: "20%", float: "left", "margin-left" : "5em"}}>
+      <h3 style={{ "width" : "100%" }}>Current Jobs:</h3>
+      { ["Astronaut","Firefighter","Cowboy"].map(renderButtonUnClkFull) }
+    </div>
+    <div style={{ width: "70%", float: "left", margin: "0 1em" }}>
       <h3>{ header }</h3>
       { text.map((txt) => genQuestions(txt.text,txt.hint)) }
       <div style={{ "margin":"1em" }}>{ form }</div>
@@ -60,6 +69,7 @@ const genForm = (info) => {
           rows={5}/>
       </div>
       <div style={{ 'margin' : '1em' }}>{ buttons.map(renderButtonUnClk) }</div>
+    </div>
   </div>
 }
 
