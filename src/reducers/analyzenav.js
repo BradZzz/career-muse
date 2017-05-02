@@ -60,7 +60,7 @@ const retResume = (job) => {
 
 const renderJob = (job, idx) => {
   const { employer, position, summary, highlights } = job
-  return <div style={{ width: '96%', margin: '1em', height: '45vh', 'overflowY': 'auto', 'background': 'white',
+  return <div style={{ width: '96%', margin: '1em', height: '45vh', 'background': 'white',
              'borderRadius' : '5px', 'textAlign' : 'left' }}>
              <TxtEditor key={ idx } content={ retResume(job) }></TxtEditor>
           </div>

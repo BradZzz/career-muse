@@ -79,7 +79,7 @@ export class TxtEditor extends Component {
           editorState={editorState}
           onToggle={this.toggleInlineStyle}
         />
-        <div className={className} onClick={this.focus}>
+        <div className={className} onClick={this.focus} style={{ 'height': '35vh', 'overflow-y' : 'auto' }}>
           <Editor
             blockStyleFn={getBlockStyle}
             customStyleMap={styleMap}

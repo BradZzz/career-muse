@@ -21,7 +21,7 @@ const genPar = (text) => {
 }
 
 const genMultiForm = (resumeString) => {
-  return <div style={{ width: '96%', margin: '1em', height: '45vh', 'overflowY': 'auto', 'background': 'white',
+  return <div style={{ width: '96%', margin: '1em', height: '45vh', 'background': 'white',
     'borderRadius' : '5px', 'textAlign' : 'left' }}>
       <TxtEditor content={ resumeString }></TxtEditor>
   </div>
