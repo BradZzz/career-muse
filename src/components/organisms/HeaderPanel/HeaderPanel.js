@@ -47,12 +47,18 @@ export class HeaderPanel extends Component {
     {
       this.setState({ signedIn: nextProps.signedIn })
     }
+    if(JSON.stringify(this.state.mcurrent) !== JSON.stringify(nextProps.mcurrent))
+    {
+      this.setState({ mcurrent: nextProps.mcurrent })
+    }
   }
 
   renderTab = (tab, idx) => {
     const { dispatch } = this.props
+    const { mcurrent } = this.state
+    console.log(mcurrent + "X<>X<>X<>X" + idx)
     return (
-      <span className={styles.nav} onClick={ () => dispatch(NavActions.nav({ nav : idx })) } key={ idx }>
+      <span className={ mcurrent == idx ? styles.nav + " " + styles.selected : styles.nav } onClick={ () => dispatch(NavActions.nav({ nav : idx })) } key={ idx }>
         { tab }
       </span>
     )

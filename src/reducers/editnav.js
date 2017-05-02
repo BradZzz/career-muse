@@ -28,7 +28,7 @@ const genMultiForm = (resumeString) => {
 }
 
 const renderButton = (text, idx) => {
-  return <ButtonAlt key={ idx }>{ text }</ButtonAlt>
+  return <ButtonAlt clickable={ false } key={ idx }>{ text }</ButtonAlt>
 }
 
 const genDownloadForm = (buttons) => {

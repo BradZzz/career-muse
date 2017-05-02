@@ -8,6 +8,10 @@
   background: var(--primary-color-dark);
 }
 
+.selected {
+  color: color(var(--accent-color) blackness(20%)) !important;
+}
+
 .navWrap {
   position: absolute;
 }

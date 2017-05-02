@@ -1,18 +1,18 @@
 // @flow
-import React, { Component } from "react";
+import React, { Component, PropTypes } from "react";
+import { connect } from "react-redux"
 import styles from "./Button.css";
 
-export default class ButtonAlt extends Component {
-  props: { children: React$Element<any> }
-
+export class ButtonAlt extends Component {
   constructor(props) {
     super(props)
     this.state = {
       active: false,
+      clickable: props.clickable,
     }
   }
 
-  action = () => this.setState({ active: !this.state.active })
+  action = () => this.setState({ active: this.state.clickable ? !this.state.active : false })
 
   render() {
     const { active } = this.state
@@ -26,3 +26,13 @@ export default class ButtonAlt extends Component {
     );
   }
 }
+
+ButtonAlt.propTypes = {
+  clickable: PropTypes.bool.isRequired,
+}
+
+function mapStateToProps(state) {
+  return { }
+}
+
+export default connect(mapStateToProps)(ButtonAlt)

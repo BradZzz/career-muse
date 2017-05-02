@@ -10,6 +10,7 @@ import { TxtEditor } from "../components/atoms/"
 const styles = {
   block: {
     margin: "0 auto",
+    width: "90%",
   },
   checkbox: {
     maxWidth: 250,
@@ -39,11 +40,12 @@ const flexCol = {
   "display": "flex",
   "flex-direction": "row",
   "align-items": "flex-start",
+  "margin-bottom": "1em",
 }
 
 const genChecks = (title, checks) => {
   return <div style={styles.block}>
-      <p>{ title }</p>
+      { genNews(title) }
       <div style={ flexCol }>
         { checks.map(renderCheck) }
       </div>
@@ -62,15 +64,6 @@ const renderJob = (job, idx) => {
              'borderRadius' : '5px', 'textAlign' : 'left' }}>
              <TxtEditor key={ idx } content={ retResume(job) }></TxtEditor>
           </div>
-//  return <div key={ idx } style={{ "overflowY" : "auto", "height" : "300px", "background" : "white", "borderRadius" : "5px",
-//                               "margin" : "2em", "padding" : "1em" }}>
-//    <h3>Employer: { genPar(employer) }</h3>
-//    <h3>Position: { genPar(position) }</h3>
-//    <p>Summary: { genPar(summary) }</p>
-//    <div style={{ margin: '1em' }}>
-//      { highlights.map((light)=> <span>Summary: { genPar(light) } </span>) }
-//    </div>
-//  </div>
 }
 
 const genEmpHist = (profile) => {
@@ -97,18 +90,16 @@ const initialState = {
   navMeta : [{ elems : [
     <IteratorPanel>
      <div>
-      { genHeader("Let's kick off the resume tailoring process!") }
-      { genNews("We scanned your resume and job description. Our analysis shows that you have 3 years of experience in 'Cat Wrangling'") }
-      { genNews("Good news. We have identified 7 matching keywords and phrases related to 'Cat Wrangling'") }
-      { genNews("Not so good news. We have identified 7 missing keywords and phrases related to 'Cat Wrangling'") }
-     </div>
-     <div>
+      { genNews("Let's kick off the resume tailoring process!") }
+      { genPar("We scanned your resume and job description. Our analysis shows that you have 3 years of experience in 'Cat Wrangling'") }
+      { genPar("Good news. We have identified 7 matching keywords and phrases related to 'Cat Wrangling'") }
+      { genPar("Not so good news. We have identified 7 missing keywords and phrases related to 'Cat Wrangling'") }
       { genNews("Let's optimize your resume ranking by adding more content!") }
       { genPar("Be honest. Anything you add here is up for grabs in an interview.") }
      </div>
      { genChecks("What other skills do you bring to the table?", su.TEST_USR_SKILLS) }
      { genChecks("How would you describe yourself at work?", su.TEST_USR_SKILLS_SOFT) }
-     { genNews("Nice! We've added 10 new keywords and phrases to your profile.") }
+     { genHeader("Nice! We've added 10 new keywords and phrases to your profile.") }
      </IteratorPanel>
     ] },{ elems : [
     <IteratorPanel>
