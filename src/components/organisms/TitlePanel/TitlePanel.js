@@ -27,20 +27,26 @@ export class TitlePanel extends Component {
   }
 
   title = () => <header>
-                  <h1 className={styles.title}>careermuse</h1>
+                  <img src="../images/logo.png" style={{ 'width' : '200px', 'top' : '1em', 'left' : '1em',
+                    'position' : 'absolute' }}/>
+                  <h1 className={styles.title}>Goodbye Resume Tailoring. Hello Career Muse.</h1>
                 </header>
 
   render() {
     const { signedIn, types, current } = this.state
     let head = this.title()
     if (signedIn) {
-      head = <DescBar>
-            <NavBar></NavBar>
-          </DescBar>
+//      head = <div className={ "hide" }>
+//            <DescBar>
+//              <NavBar></NavBar>
+//            </DescBar>
+//          </div>
+        head = <NavBar></NavBar>
     }
     return (
       <div className={styles.root} style={{
-        padding: this.state.signedIn ? '1.8em 0' : '5em 0',
+        'paddingTop': this.state.signedIn ? '1.8em' : '10em',
+        'paddingBottom': this.state.signedIn ? '1.8em' : '0',
         height: this.state.signedIn ? '150px' : '200px',
       }}>
         { head }

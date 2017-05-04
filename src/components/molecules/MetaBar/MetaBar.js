@@ -62,9 +62,6 @@ export class MetaBar extends Component {
 
   render() {
     const { main, sub } = this.state
-    console.log(sub)
-    console.log(sub.meta)
-    console.log(sub.meta[sub.current])
     return (
       <div className={styles.root}>
         { sub.meta[sub.current].elems.map((el, idx) => <div key={ idx } className={styles.desc}>{ el }</div>) }

@@ -56,7 +56,6 @@ export class HeaderPanel extends Component {
   renderTab = (tab, idx) => {
     const { dispatch } = this.props
     const { mcurrent } = this.state
-    console.log(mcurrent + "X<>X<>X<>X" + idx)
     return (
       <span className={ mcurrent == idx ? styles.nav + " " + styles.selected : styles.nav } onClick={ () => dispatch(NavActions.nav({ nav : idx })) } key={ idx }>
         { tab }
@@ -70,7 +69,7 @@ export class HeaderPanel extends Component {
     return (
       <div className={styles.root} style={{ display: this.state.signedIn ? 'block' : 'none' }}>
         <img src="../images/cm-logo-sm-alt.png" style={{ 'width' : '50px', 'margin-left': '1em', 'position' : 'absolute' }}/>
-        <div className={styles.navWrap} style={{ zIndex: '1' }}>
+        <div className={styles.navWrap + " hide"} style={{ zIndex: '1' }}>
           { names.map(this.renderTab) }
         </div>
         <CenterBox align="right" height="50px">
