@@ -3,12 +3,13 @@ CareerMuse Resume Portal
 
 Resumes built by experts
 
+![01](./screens/screen01.png)
+![02](./screens/screen02.png)
+
 ## Overview
 
 * Atomic design
 * React and Nodejs
-
-![alt text](./screens/screen01.png)
 
 ## Installation
 
