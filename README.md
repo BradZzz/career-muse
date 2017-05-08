@@ -8,8 +8,9 @@ Resumes built by experts
 * Atomic design
 * React and Nodejs
 
-## Installation
+![alt text](./screens/screen01.png)
 
+## Installation
 
 ```
 
