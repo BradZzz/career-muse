@@ -1,9 +1,9 @@
 {
-  "name": "occasio",
+  "name": "cmuse",
   "version": "0.0.1",
-  "description": "Occasio domain trading network",
+  "description": "Career Muse Resume Portal",
   "private": true,
-  "author": "tsuyoshiwada",
+  "author": "bradzimmerman",
   "license": "MIT",
   "scripts": {
     "start": "node server",

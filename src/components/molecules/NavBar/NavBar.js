@@ -58,10 +58,6 @@ export class NavBar extends Component {
       break;
     }
     this.setState({ tabs })
-
-    console.log("Done Navbar: ")
-    console.log(this.state.main.tabs[this.state.main.current])
-    console.log(this.state)
   }
 
   renderTab = (tab, idx) => {
@@ -73,10 +69,6 @@ export class NavBar extends Component {
       case "Analyze": clicky = () => dispatch(AnalyzeNavActions.nav({ nav : idx })); break;
       case "Edit": clicky = () => dispatch(EditNavActions.nav({ nav : idx })); break;
     }
-
-    console.log("renderTab")
-    console.log(idx + ":" + current)
-
     return <span className={ current === idx ? styles.tab + " " + styles.selected : styles.tab } onClick={ clicky } key={ idx }>
              { tab }
            </span>
